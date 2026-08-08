@@ -1,21 +1,10 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import { getDocs } from 'firebase/firestore';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { WorkoutScreen } from '@/features/workouts/components/workout-screen';
-import { render, screen } from '@/testing/test-utils';
+import { mockSignedInUser, render, screen } from '@/testing/test-utils';
 
-const mockedOnAuthStateChanged = vi.mocked(onAuthStateChanged);
 const mockedGetDocs = vi.mocked(getDocs);
-
-// Each test uses its own uid so TanStack Query's cache (a module-level singleton shared
-// across renders — see src/lib/query-client.ts) never serves a previous test's cached result.
-function mockSignedInUser(uid: string) {
-  mockedOnAuthStateChanged.mockImplementation((_auth, callback) => {
-    (callback as (user: unknown) => void)({ uid, email: 'owner@example.com' });
-    return () => {};
-  });
-}
 
 // All 5 fixed workoutDays already seeded, so getOrCreateWorkoutDays never has to fall into
 // its create-missing-days path (which would also need writeBatch mocked).

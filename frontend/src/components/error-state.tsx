@@ -1,13 +1,13 @@
 import { Button } from '@/components/ui/button';
 
-export interface CheckInsErrorStateProps {
+export interface ErrorStateProps {
   title: string;
   description: string;
   retryLabel: string;
   onRetry: () => void;
 }
 
-export function CheckInsErrorState(props: CheckInsErrorStateProps) {
+export function ErrorState(props: ErrorStateProps) {
   const { title, description, retryLabel, onRetry } = props;
 
   return (

@@ -1,9 +1,9 @@
+import { EmptyState } from '@/components/empty-state';
+import { ErrorState } from '@/components/error-state';
 import { CheckInChart } from '@/features/check-ins/components/check-in-chart';
 import { CheckInForm } from '@/features/check-ins/components/check-in-form';
 import { CheckInHistory } from '@/features/check-ins/components/check-in-history';
 import { CheckInProgressSummary } from '@/features/check-ins/components/check-in-progress-summary';
-import { CheckInsEmptyState } from '@/features/check-ins/components/check-ins-empty-state';
-import { CheckInsErrorState } from '@/features/check-ins/components/check-ins-error-state';
 import { useCheckInsScreen } from '@/features/check-ins/hooks/use-check-ins-screen.hooks';
 import { useTranslate } from '@/hooks/use-translate';
 
@@ -22,7 +22,7 @@ export function CheckInsScreen() {
   if (state.status === 'error') {
     return (
       <div className="mx-auto max-w-2xl p-4">
-        <CheckInsErrorState
+        <ErrorState
           title={t('checkIns.error.title')}
           description={t('checkIns.error.description')}
           retryLabel={t('checkIns.error.retry')}
@@ -63,7 +63,7 @@ export function CheckInsScreen() {
       />
 
       {isEmpty ? (
-        <CheckInsEmptyState
+        <EmptyState
           title={t('checkIns.empty.title')}
           description={t('checkIns.empty.description')}
         />

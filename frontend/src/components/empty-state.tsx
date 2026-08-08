@@ -1,9 +1,9 @@
-export interface WorkoutsEmptyStateProps {
+export interface EmptyStateProps {
   title: string;
   description: string;
 }
 
-export function WorkoutsEmptyState(props: WorkoutsEmptyStateProps) {
+export function EmptyState(props: EmptyStateProps) {
   const { title, description } = props;
 
   return (

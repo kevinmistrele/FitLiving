@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { EmptyState } from '@/components/empty-state';
+import { ErrorState } from '@/components/error-state';
 import { ExerciseForm, type ExerciseFormProps } from '@/features/workouts/components/exercise-form';
 import { ExerciseItem } from '@/features/workouts/components/exercise-item';
-import { WorkoutsEmptyState } from '@/features/workouts/components/workouts-empty-state';
-import { WorkoutsErrorState } from '@/features/workouts/components/workouts-error-state';
 import type { LoadEntryFormProps } from '@/features/workouts/components/load-entry-form';
 import type { Exercise, LoadEntry } from '@/features/workouts/types/workout.types';
 import { useTranslate } from '@/hooks/use-translate';
@@ -65,7 +65,7 @@ export function ExerciseList(props: ExerciseListProps) {
 
   if (isError) {
     return (
-      <WorkoutsErrorState
+      <ErrorState
         title={t('workouts.exercisesError.title')}
         description={t('workouts.exercisesError.description')}
         retryLabel={t('common.retry')}
@@ -77,7 +77,7 @@ export function ExerciseList(props: ExerciseListProps) {
   return (
     <div className="flex flex-col gap-3">
       {exercises.length === 0 && (
-        <WorkoutsEmptyState
+        <EmptyState
           title={t('workouts.empty.title')}
           description={t('workouts.empty.description')}
         />

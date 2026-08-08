@@ -1,7 +1,7 @@
+import { ErrorState } from '@/components/error-state';
 import { ExerciseList } from '@/features/workouts/components/exercise-list';
 import { WorkoutDayTabs } from '@/features/workouts/components/workout-day-tabs';
 import { WorkoutTipBanner } from '@/features/workouts/components/workout-tip-banner';
-import { WorkoutsErrorState } from '@/features/workouts/components/workouts-error-state';
 import { useWorkoutScreen } from '@/features/workouts/hooks/use-workout-screen.hooks';
 import { useTranslate } from '@/hooks/use-translate';
 
@@ -20,7 +20,7 @@ export function WorkoutScreen() {
   if (state.status === 'error') {
     return (
       <div className="mx-auto max-w-2xl p-4">
-        <WorkoutsErrorState
+        <ErrorState
           title={t('workouts.error.title')}
           description={t('workouts.error.description')}
           retryLabel={t('common.retry')}
