@@ -56,6 +56,11 @@ export default tseslint.config(
               except: ['./auth'],
             },
             {
+              target: './src/features/check-ins',
+              from: './src/features',
+              except: ['./check-ins'],
+            },
+            {
               target: './src/features',
               from: './src/app',
             },

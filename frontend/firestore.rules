@@ -2,18 +2,45 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Deny everything by default. Add narrow, ownership-scoped rules per
-    // collection as data features are built — see docs/architecture/api-layer.md
-    // and docs/decisions/0012-firebase-backend.md.
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+
+      // Acompanhamento (check-ins) module — docs/firestore-data-model.md sections 1.1/1.2.
+      match /profile/{docId} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+
+      match /checkins/{checkinId} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+
+      // Future rules once these data features are built (Treino/Dieta —
+      // see docs/project/fitliving-web.md, section 7 and
+      // docs/firestore-data-model.md section 3):
+      // match /workoutDays/{dayId} {
+      //   allow read, write: if request.auth != null && request.auth.uid == uid;
+      //
+      //   match /exercises/{exerciseId} {
+      //     allow read, write: if request.auth != null && request.auth.uid == uid;
+      //
+      //     match /loadHistory/{loadEntryId} {
+      //       allow read, write: if request.auth != null && request.auth.uid == uid;
+      //     }
+      //   }
+      // }
+      //
+      // match /dietGoals/{docId} {
+      //   allow read, write: if request.auth != null && request.auth.uid == uid;
+      // }
+      //
+      // match /mealPlan/{mealId} {
+      //   allow read, write: if request.auth != null && request.auth.uid == uid;
+      // }
+    }
+
+    // Deny everything else by default.
     match /{document=**} {
       allow read, write: if false;
     }
-
-    // Future pattern once data features exist (Treino/Dieta/Acompanhamento —
-    // see docs/project/fitliving-web.md, section 7): every document lives
-    // under the owner's uid, and only that uid may read/write it.
-    // match /users/{uid}/{document=**} {
-    //   allow read, write: if request.auth != null && request.auth.uid == uid;
-    // }
   }
 }

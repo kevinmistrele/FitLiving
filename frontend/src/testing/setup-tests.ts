@@ -32,6 +32,19 @@ vi.mock('firebase/auth', () => ({
 
 vi.mock('firebase/firestore', () => ({
   getFirestore: vi.fn(() => ({})),
+  collection: vi.fn(),
+  doc: vi.fn(),
+  getDoc: vi.fn(),
+  getDocs: vi.fn(),
+  setDoc: vi.fn(),
+  query: vi.fn(),
+  orderBy: vi.fn(),
+  limit: vi.fn(),
+  serverTimestamp: vi.fn(() => 'server-timestamp'),
+  writeBatch: vi.fn(),
+  Timestamp: {
+    fromDate: vi.fn((date: Date) => ({ toDate: () => date })),
+  },
 }));
 
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));

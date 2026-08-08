@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
+import { Button } from '@/components/ui/button';
 import { signOut } from '@/features/auth/api/sign-out';
+import { CheckInsScreen } from '@/features/check-ins/components/check-ins-screen';
 import { useTranslate } from '@/hooks/use-translate';
 import { useAuthStore } from '@/lib/auth-store';
 
@@ -20,21 +22,19 @@ export function HomeRoute() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 p-8 text-center">
-      <h1 className="text-xl font-semibold">{t('home.welcomeBack')}</h1>
-      {user?.email && <p className="text-muted-foreground">{user.email}</p>}
-      <button
-        type="button"
-        onClick={() => void handleLogout()}
-        className="border-border rounded-md border px-4 py-2"
-      >
-        {t('home.logout')}
-      </button>
+    <div className="min-h-screen">
+      <header className="border-border flex items-center justify-between gap-4 border-b p-4">
+        {user?.email && <p className="text-muted-foreground text-sm">{user.email}</p>}
+        <Button type="button" variant="outline" onClick={() => void handleLogout()}>
+          {t('home.logout')}
+        </Button>
+      </header>
       {signOutError && (
-        <p role="alert" className="text-destructive">
+        <p role="alert" className="text-destructive p-4 text-center">
           {signOutError}
         </p>
       )}
-    </main>
+      <CheckInsScreen />
+    </div>
   );
 }

@@ -1,13 +1,12 @@
 # Modelo de Dados — Cloud Firestore
 
-> **Status: documento de design, ainda não implementado.**
-> Este arquivo especifica o schema do Firestore que vai suportar os módulos descritos em
-> [`docs/fitliving.md`](./fitliving.md). Nenhuma coleção aqui listada existe hoje no projeto.
-> A implementação do **módulo Acompanhamento** (item 2 da "Ordem Sugerida de Construção",
-> seção 8 de `fitliving.md`) é o próximo passo do desenvolvimento e deve consumir este
-> documento como base — em particular a seção 4 (`checkins`) e as fórmulas da seção 2.
-> Ajustes de nomes de campos são esperados durante a implementação; quando isso acontecer,
-> este arquivo deve ser atualizado junto.
+> **Status: seções 1.1 (`profile/main`, campos usados pelo Acompanhamento) e 1.2 (`checkins`)
+> implementadas** no frontend (`frontend/src/lib/profile.ts`,
+> `frontend/src/features/check-ins/`) como parte do **módulo Acompanhamento** (item 2 da
+> "Ordem Sugerida de Construção", seção 8 de `fitliving.md`), com nomes de campos e fórmulas
+> conforme especificado abaixo — nenhum ajuste de nome foi necessário durante a implementação.
+> As demais seções (1.3–1.7: Treino e Dieta) continuam apenas documento de design, ainda não
+> implementadas.
 
 Backend: 100% Firebase. Autenticação via Firebase Authentication (email/senha, dono único,
 sem cadastro público). Persistência via Cloud Firestore. Não há API REST própria — o
