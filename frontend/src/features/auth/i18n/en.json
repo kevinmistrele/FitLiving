@@ -1,0 +1,16 @@
+{
+  "auth.login.title": "Sign in",
+  "auth.login.description": "Enter your email and password to access your FitLiving data.",
+  "auth.login.emailLabel": "Email",
+  "auth.login.passwordLabel": "Password",
+  "auth.login.submit": "Sign in",
+  "auth.login.submitPending": "Signing in…",
+  "auth.login.errors.emailRequired": "Enter your email.",
+  "auth.login.errors.emailInvalid": "Enter a valid email address.",
+  "auth.login.errors.passwordRequired": "Enter your password.",
+  "auth.login.errors.invalidCredential": "These details don't match our records.",
+  "auth.login.errors.userDisabled": "This account has been disabled.",
+  "auth.login.errors.tooManyRequests": "Too many attempts. Try again later.",
+  "auth.login.errors.network": "Couldn't reach the server. Check your connection and try again.",
+  "auth.login.errors.generic": "Something went wrong signing in. Please try again."
+}

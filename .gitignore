@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Mobile build artifacts (mobile/ios, mobile/android are currently docs-only)
+**/DerivedData/
+**/Pods/
+**/build/
+**/*.xcuserstate
+**/*.xcworkspace/xcuserdata/
+
+# Claude Code handoffs (never committed, per frontend/docs/agents/workflow.md)
+.claude/handoffs/

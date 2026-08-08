@@ -1,0 +1,19 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Deny everything by default. Add narrow, ownership-scoped rules per
+    // collection as data features are built — see docs/architecture/api-layer.md
+    // and docs/decisions/0012-firebase-backend.md.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Future pattern once data features exist (Treino/Dieta/Acompanhamento —
+    // see docs/project/fitliving-web.md, section 7): every document lives
+    // under the owner's uid, and only that uid may read/write it.
+    // match /users/{uid}/{document=**} {
+    //   allow read, write: if request.auth != null && request.auth.uid == uid;
+    // }
+  }
+}

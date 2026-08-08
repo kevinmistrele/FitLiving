@@ -1,0 +1,16 @@
+{
+  "auth.login.title": "Entrar",
+  "auth.login.description": "Informe seu email e senha para acessar seus dados do FitLiving.",
+  "auth.login.emailLabel": "Email",
+  "auth.login.passwordLabel": "Senha",
+  "auth.login.submit": "Entrar",
+  "auth.login.submitPending": "Entrando…",
+  "auth.login.errors.emailRequired": "Informe seu email.",
+  "auth.login.errors.emailInvalid": "Informe um email válido.",
+  "auth.login.errors.passwordRequired": "Informe sua senha.",
+  "auth.login.errors.invalidCredential": "Esses dados não conferem com nossos registros.",
+  "auth.login.errors.userDisabled": "Esta conta foi desativada.",
+  "auth.login.errors.tooManyRequests": "Muitas tentativas. Tente novamente mais tarde.",
+  "auth.login.errors.network": "Não foi possível conectar. Verifique sua conexão e tente novamente.",
+  "auth.login.errors.generic": "Algo deu errado ao entrar. Tente novamente."
+}

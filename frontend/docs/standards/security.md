@@ -1,0 +1,19 @@
+# Security
+
+- Never commit or hardcode secrets, tokens, API keys, or private endpoints. Environment values go through `src/config/env.ts` and `.env` files (never `.env` itself — only `.env.example` with placeholder values is committed).
+- Don't log tokens, passwords, or full request/response bodies that may contain personal data.
+- Treat all API responses as untrusted input: validate/parse shape (e.g. with `zod`) at the boundary before trusting it deeper in the app, especially before rendering it as HTML.
+- Never use `dangerouslySetInnerHTML` with unsanitized data. If rendering rich/user-provided content is required, sanitize first and say so explicitly in the PR.
+- Don't build URLs, queries, or DOM strings by concatenating unescaped user input.
+- Keep dependency additions deliberate — don't add a package to solve a one-off problem without checking it's maintained and necessary (see the safety rules in [../agents/workflow.md](../agents/workflow.md)).
+- When a task involves auth, PII, or payments, treat it as higher risk: prefer the smallest change, add tests for the failure paths (not just the happy path), and call out the risk explicitly in the final summary rather than assuming it's fine.
+
+## Auth
+
+This project uses Firebase Authentication (email/password only — see [0012-firebase-backend.md](../decisions/0012-firebase-backend.md)). There is no application server, so the usual "prefer an HttpOnly cookie over client-readable storage" advice doesn't apply here — there is nothing to mint or verify a cookie:
+
+- Session/token lifecycle (refresh, persistence, expiry) is owned entirely by the Firebase Auth SDK. Read the current user through `src/lib/auth-store.ts` (`useAuthStore`), populated by a single `onAuthStateChanged` listener wired in `src/app/provider.tsx` — don't read `auth.currentUser` directly elsewhere or persist the user/token into `localStorage`/`sessionStorage` by hand.
+- This is a single-owner app: there is no public sign-up UI or route. The owner's account is created manually in the Firebase console.
+- Authorization is enforced by Firestore Security Rules (`firestore.rules`, deny-by-default), not app-level RBAC — there is no server to run RBAC checks on. Model ownership in rules (`request.auth.uid == uid`), not roles, since there is exactly one user.
+- Client-side checks (hiding a button, redirecting an unauthenticated visitor via the protected route layout) are still UX only — Firestore Security Rules are what actually enforce the boundary, same principle as a server enforcing a rule independently of the client.
+- Never log the Firebase ID token, and never render a raw `FirebaseError` message/code to the user — map it to a user-facing string (see [errors.md](./errors.md) and `src/features/auth/utils/get-login-error-message-key.ts`).
