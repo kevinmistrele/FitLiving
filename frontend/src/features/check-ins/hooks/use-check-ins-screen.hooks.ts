@@ -2,7 +2,7 @@ import { type FormEvent, useState } from 'react';
 
 import { useCheckInsQuery } from '@/features/check-ins/hooks/use-check-ins-query';
 import { useCreateCheckInMutation } from '@/features/check-ins/hooks/use-create-check-in-mutation';
-import { useProfileQuery } from '@/features/check-ins/hooks/use-profile-query';
+import { useProfileQuery } from '@/lib/profile';
 import {
   createCheckInSchema,
   type CheckInFieldErrors,

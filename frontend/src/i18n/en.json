@@ -6,5 +6,6 @@
   "layout.nav.label": "Main navigation",
   "layout.nav.checkIns": "Check-ins",
   "layout.nav.workouts": "Workouts",
+  "layout.nav.diet": "Diet",
   "layout.logout": "Log out"
 }

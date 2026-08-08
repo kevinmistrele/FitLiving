@@ -14,8 +14,8 @@ function navLinkClassName({ isActive }: { isActive: boolean }): string {
   );
 }
 
-// Shared shell for both authenticated screens (Acompanhamento and Treino) — owns the
-// auth guard, the nav between them, and the logout button, since both routes need it.
+// Shared shell for all authenticated screens (Acompanhamento, Treino and Dieta) — owns the
+// auth guard, the nav between them, and the logout button, since every route needs it.
 export function ProtectedLayout() {
   const user = useAuthStore((state) => state.user);
   const isInitializing = useAuthStore((state) => state.isInitializing);
@@ -53,6 +53,9 @@ export function ProtectedLayout() {
           </NavLink>
           <NavLink to="/workouts" className={navLinkClassName}>
             {t('layout.nav.workouts')}
+          </NavLink>
+          <NavLink to="/diet" className={navLinkClassName}>
+            {t('layout.nav.diet')}
           </NavLink>
         </nav>
         <div className="flex items-center gap-4">

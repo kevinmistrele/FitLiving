@@ -1,14 +1,18 @@
 # Modelo de Dados — Cloud Firestore
 
-> **Status: seções 1.1 (`profile/main`, campos usados pelo Acompanhamento) e 1.2 (`checkins`)
-> implementadas** no frontend (`frontend/src/lib/profile.ts`,
-> `frontend/src/features/check-ins/`) como parte do **módulo Acompanhamento** (item 2 da
-> "Ordem Sugerida de Construção", seção 8 de `fitliving.md`), com nomes de campos e fórmulas
-> conforme especificado abaixo — nenhum ajuste de nome foi necessário durante a implementação.
-> **Seções 1.3–1.5 (`workoutDays`/`exercises`/`loadHistory`) também implementadas**
-> (`frontend/src/features/workouts/`) como parte do **módulo Treino** (item 3 da "Ordem
-> Sugerida de Construção") — mesmo schema, nenhum ajuste de nome necessário. As demais seções
-> (1.6–1.7: Dieta) continuam apenas documento de design, ainda não implementadas.
+> **Status: todas as seções (1.1–1.7) implementadas** no frontend. Seção 1.1 (`profile/main`)
+> e 1.2 (`checkins`) — `frontend/src/lib/profile.ts`, `frontend/src/features/check-ins/` —
+> como parte do **módulo Acompanhamento** (item 2 da "Ordem Sugerida de Construção", seção 8
+> de `fitliving.md`). Seções 1.3–1.5 (`workoutDays`/`exercises`/`loadHistory`) —
+> `frontend/src/features/workouts/` — como parte do **módulo Treino** (item 3). Seções 1.6–1.7
+> (Dieta) — `frontend/src/lib/profile.ts` (campos `heightCm`/`age`/`sex`/`activityLevel`/
+> `dietDeficitLevel`) e `frontend/src/features/diet/` — como parte do **módulo Dieta e Metas**
+> (item 4, último módulo funcional do plano). Em todos os casos, nomes de campos e fórmulas
+> seguem o especificado abaixo — nenhum ajuste de nome foi necessário durante a implementação.
+> Confirmando a decisão da seção 1.6: `dietGoals/main` **não foi persistido** — TDEE, meta
+> calórica, IMC e macros são calculados em memória a cada render a partir de `profile/main`
+> (`useMemo` sobre o resultado de `useProfileQuery`), então essa coleção não existe no
+> Firestore nem tem regra de segurança própria (ver seção 3).
 
 Backend: 100% Firebase. Autenticação via Firebase Authentication (email/senha, dono único,
 sem cadastro público). Persistência via Cloud Firestore. Não há API REST própria — o
@@ -338,9 +342,8 @@ service cloud.firestore {
         }
       }
 
-      match /dietGoals/{docId} {
-        allow read, write: if request.auth != null && request.auth.uid == uid;
-      }
+      // dietGoals/main has no rule: it's never persisted (section 1.6) — TDEE/target
+      // calories/BMI/macros are calculated in memory from profile/main on every render.
 
       match /mealPlan/{mealId} {
         allow read, write: if request.auth != null && request.auth.uid == uid;

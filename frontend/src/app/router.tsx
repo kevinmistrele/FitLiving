@@ -33,6 +33,13 @@ export const router = createBrowserRouter([
           return { Component: WorkoutsRoute };
         },
       },
+      {
+        path: 'diet',
+        lazy: async () => {
+          const { DietRoute } = await import('@/app/routes/diet');
+          return { Component: DietRoute };
+        },
+      },
     ],
   },
 ]);

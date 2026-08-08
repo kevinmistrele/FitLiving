@@ -27,16 +27,13 @@ service cloud.firestore {
         }
       }
 
-      // Future rules once this data feature is built (Dieta —
-      // see docs/project/fitliving-web.md, section 7 and
-      // docs/firestore-data-model.md section 3):
-      // match /dietGoals/{docId} {
-      //   allow read, write: if request.auth != null && request.auth.uid == uid;
-      // }
-      //
-      // match /mealPlan/{mealId} {
-      //   allow read, write: if request.auth != null && request.auth.uid == uid;
-      // }
+      // Dieta module — docs/firestore-data-model.md section 1.7. Note: dietGoals/main has no
+      // rule because it's never persisted (section 1.6) — TDEE/target calories/BMI/macros are
+      // calculated in memory from profile/main on every render, so there is no collection to
+      // protect.
+      match /mealPlan/{mealId} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
     }
 
     // Deny everything else by default.

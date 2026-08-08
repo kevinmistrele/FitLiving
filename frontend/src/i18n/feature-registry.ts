@@ -1,5 +1,6 @@
 import { authFeatureMessages } from '@/features/auth/i18n';
 import { checkInsFeatureMessages } from '@/features/check-ins/i18n';
+import { dietFeatureMessages } from '@/features/diet/i18n';
 import { workoutsFeatureMessages } from '@/features/workouts/i18n';
 
 interface FeatureMessages {
@@ -13,6 +14,7 @@ const features: FeatureMessages[] = [
   authFeatureMessages,
   checkInsFeatureMessages,
   workoutsFeatureMessages,
+  dietFeatureMessages,
 ];
 
 export function mergeFeatureMessages(locale: 'en' | 'pt'): Record<string, string> {
