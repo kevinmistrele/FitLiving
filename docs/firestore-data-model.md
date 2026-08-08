@@ -5,8 +5,10 @@
 > `frontend/src/features/check-ins/`) como parte do **módulo Acompanhamento** (item 2 da
 > "Ordem Sugerida de Construção", seção 8 de `fitliving.md`), com nomes de campos e fórmulas
 > conforme especificado abaixo — nenhum ajuste de nome foi necessário durante a implementação.
-> As demais seções (1.3–1.7: Treino e Dieta) continuam apenas documento de design, ainda não
-> implementadas.
+> **Seções 1.3–1.5 (`workoutDays`/`exercises`/`loadHistory`) também implementadas**
+> (`frontend/src/features/workouts/`) como parte do **módulo Treino** (item 3 da "Ordem
+> Sugerida de Construção") — mesmo schema, nenhum ajuste de nome necessário. As demais seções
+> (1.6–1.7: Dieta) continuam apenas documento de design, ainda não implementadas.
 
 Backend: 100% Firebase. Autenticação via Firebase Authentication (email/senha, dono único,
 sem cadastro público). Persistência via Cloud Firestore. Não há API REST própria — o

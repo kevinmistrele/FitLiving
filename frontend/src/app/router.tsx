@@ -26,6 +26,13 @@ export const router = createBrowserRouter([
           return { Component: HomeRoute };
         },
       },
+      {
+        path: 'workouts',
+        lazy: async () => {
+          const { WorkoutsRoute } = await import('@/app/routes/workouts');
+          return { Component: WorkoutsRoute };
+        },
+      },
     ],
   },
 ]);

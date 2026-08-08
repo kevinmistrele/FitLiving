@@ -3,5 +3,8 @@
   "common.retry": "Tentar novamente",
   "common.somethingWentWrong": "Algo deu errado",
   "app.booting": "Carregando FitLiving…",
-  "home.logout": "Sair"
+  "layout.nav.label": "Navegação principal",
+  "layout.nav.checkIns": "Acompanhamento",
+  "layout.nav.workouts": "Treino",
+  "layout.logout": "Sair"
 }

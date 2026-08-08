@@ -3,5 +3,8 @@
   "common.retry": "Try again",
   "common.somethingWentWrong": "Something went wrong",
   "app.booting": "Loading FitLiving…",
-  "home.logout": "Log out"
+  "layout.nav.label": "Main navigation",
+  "layout.nav.checkIns": "Check-ins",
+  "layout.nav.workouts": "Workouts",
+  "layout.logout": "Log out"
 }
