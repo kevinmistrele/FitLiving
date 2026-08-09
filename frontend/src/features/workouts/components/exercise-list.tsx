@@ -1,3 +1,5 @@
+import { AlertTriangle, Inbox, Plus } from 'lucide-react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { EmptyState } from '@/components/empty-state';
 import { ErrorState } from '@/components/error-state';
@@ -70,6 +72,7 @@ export function ExerciseList(props: ExerciseListProps) {
         description={t('workouts.exercisesError.description')}
         retryLabel={t('common.retry')}
         onRetry={onRetry}
+        icon={<AlertTriangle />}
       />
     );
   }
@@ -80,6 +83,7 @@ export function ExerciseList(props: ExerciseListProps) {
         <EmptyState
           title={t('workouts.empty.title')}
           description={t('workouts.empty.description')}
+          icon={<Inbox />}
         />
       )}
 
@@ -109,7 +113,10 @@ export function ExerciseList(props: ExerciseListProps) {
 
       <Card size="sm">
         <CardHeader>
-          <CardTitle>{t('workouts.exerciseForm.addTitle')}</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <Plus aria-hidden="true" className="text-primary size-4" />
+            {t('workouts.exerciseForm.addTitle')}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <ExerciseForm {...addForm} />

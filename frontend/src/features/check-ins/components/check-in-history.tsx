@@ -1,3 +1,5 @@
+import { History } from 'lucide-react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { CheckIn } from '@/features/check-ins/types/check-in.types';
 
@@ -35,7 +37,10 @@ export function CheckInHistory(props: CheckInHistoryProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          <History aria-hidden="true" className="text-primary size-4" />
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">

@@ -1,8 +1,10 @@
+import { AlertTriangle, Inbox, Plus } from 'lucide-react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { DietErrorState } from '@/features/diet/components/diet-error-state';
+import { EmptyState } from '@/components/empty-state';
+import { ErrorState } from '@/components/error-state';
 import { MealForm, type MealFormProps } from '@/features/diet/components/meal-form';
 import { MealItem } from '@/features/diet/components/meal-item';
-import { MealPlanEmptyState } from '@/features/diet/components/meal-plan-empty-state';
 import type { Meal } from '@/features/diet/types/diet.types';
 import { useTranslate } from '@/hooks/use-translate';
 
@@ -49,11 +51,12 @@ export function MealPlanList(props: MealPlanListProps) {
 
   if (isError) {
     return (
-      <DietErrorState
+      <ErrorState
         title={t('diet.mealPlanError.title')}
         description={t('diet.mealPlanError.description')}
         retryLabel={t('common.retry')}
         onRetry={onRetry}
+        icon={<AlertTriangle />}
       />
     );
   }
@@ -61,9 +64,10 @@ export function MealPlanList(props: MealPlanListProps) {
   return (
     <div className="flex flex-col gap-3">
       {meals.length === 0 && (
-        <MealPlanEmptyState
+        <EmptyState
           title={t('diet.mealPlanEmpty.title')}
           description={t('diet.mealPlanEmpty.description')}
+          icon={<Inbox />}
         />
       )}
 
@@ -87,7 +91,10 @@ export function MealPlanList(props: MealPlanListProps) {
 
       <Card size="sm">
         <CardHeader>
-          <CardTitle>{t('diet.mealForm.addTitle')}</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <Plus aria-hidden="true" className="text-primary size-4" />
+            {t('diet.mealForm.addTitle')}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <MealForm {...addForm} />

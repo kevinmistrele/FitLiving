@@ -1,3 +1,4 @@
+import { Ruler, Scale } from 'lucide-react';
 import { CartesianGrid, Line, LineChart, ReferenceLine, XAxis, YAxis } from 'recharts';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -53,7 +54,10 @@ export function CheckInChart(props: CheckInChartProps) {
     <div className="grid gap-4 md:grid-cols-2">
       <Card>
         <CardHeader>
-          <CardTitle>{weightTitle}</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <Scale aria-hidden="true" className="text-primary size-4" />
+            {weightTitle}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <ChartContainer config={weightChartConfig} className="aspect-auto h-64 w-full">
@@ -99,7 +103,10 @@ export function CheckInChart(props: CheckInChartProps) {
       </Card>
       <Card>
         <CardHeader>
-          <CardTitle>{waistTitle}</CardTitle>
+          <CardTitle className="flex items-center gap-2">
+            <Ruler aria-hidden="true" className="text-primary size-4" />
+            {waistTitle}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <ChartContainer config={waistChartConfig} className="aspect-auto h-64 w-full">

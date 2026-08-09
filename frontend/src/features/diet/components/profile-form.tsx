@@ -1,3 +1,4 @@
+import { Target } from 'lucide-react';
 import type { FormEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -64,7 +65,10 @@ export function ProfileForm(props: ProfileFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t('diet.profileForm.title')}</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          <Target aria-hidden="true" className="text-primary size-4" />
+          {t('diet.profileForm.title')}
+        </CardTitle>
         <CardDescription>{t('diet.profileForm.description')}</CardDescription>
       </CardHeader>
       <CardContent>

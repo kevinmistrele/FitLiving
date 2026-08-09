@@ -1,3 +1,5 @@
+import { AlertTriangle, Inbox } from 'lucide-react';
+
 import { EmptyState } from '@/components/empty-state';
 import { ErrorState } from '@/components/error-state';
 import { CheckInChart } from '@/features/check-ins/components/check-in-chart';
@@ -27,6 +29,7 @@ export function CheckInsScreen() {
           description={t('checkIns.error.description')}
           retryLabel={t('checkIns.error.retry')}
           onRetry={state.onRetry}
+          icon={<AlertTriangle />}
         />
       </div>
     );
@@ -66,6 +69,7 @@ export function CheckInsScreen() {
         <EmptyState
           title={t('checkIns.empty.title')}
           description={t('checkIns.empty.description')}
+          icon={<Inbox />}
         />
       ) : (
         <>

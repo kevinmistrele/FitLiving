@@ -1,3 +1,5 @@
+import { PieChart } from 'lucide-react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { DietGoals } from '@/features/diet/utils/calculate-diet-goals';
 
@@ -21,7 +23,10 @@ export function MacroBreakdown(props: MacroBreakdownProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          <PieChart aria-hidden="true" className="text-primary size-4" />
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="border-primary/30 bg-primary/5 flex items-center justify-between rounded-lg border px-4 py-3">

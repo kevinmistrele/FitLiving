@@ -1,3 +1,4 @@
+import { ClipboardCheck } from 'lucide-react';
 import type { FormEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -62,7 +63,10 @@ export function CheckInForm(props: CheckInFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          <ClipboardCheck aria-hidden="true" className="text-primary size-4" />
+          {title}
+        </CardTitle>
         <CardDescription>{tip}</CardDescription>
       </CardHeader>
       <CardContent>

@@ -1,4 +1,6 @@
-import { DietErrorState } from '@/features/diet/components/diet-error-state';
+import { AlertTriangle } from 'lucide-react';
+
+import { ErrorState } from '@/components/error-state';
 import { DietGoalsSummary } from '@/features/diet/components/diet-goals-summary';
 import { DietTipBanner } from '@/features/diet/components/diet-tip-banner';
 import { MacroBreakdown } from '@/features/diet/components/macro-breakdown';
@@ -22,11 +24,12 @@ export function DietScreen() {
   if (state.status === 'error') {
     return (
       <div className="mx-auto max-w-2xl p-4">
-        <DietErrorState
+        <ErrorState
           title={t('diet.error.title')}
           description={t('diet.error.description')}
           retryLabel={t('common.retry')}
           onRetry={state.onRetry}
+          icon={<AlertTriangle />}
         />
       </div>
     );

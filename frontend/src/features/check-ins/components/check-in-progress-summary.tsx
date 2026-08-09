@@ -1,3 +1,5 @@
+import { Gauge, Target, TrendingDown } from 'lucide-react';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress, ProgressLabel, ProgressValue } from '@/components/ui/progress';
 
@@ -47,7 +49,10 @@ export function CheckInProgressSummary(props: CheckInProgressSummaryProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          <Target aria-hidden="true" className="text-primary size-4" />
+          {title}
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         {isInsideNovemberWindow && (
@@ -61,13 +66,19 @@ export function CheckInProgressSummary(props: CheckInProgressSummaryProps) {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <p className="text-muted-foreground text-sm">{totalLostTitle}</p>
+            <p className="text-muted-foreground flex items-center gap-1.5 text-sm">
+              <TrendingDown aria-hidden="true" className="size-3.5" />
+              {totalLostTitle}
+            </p>
             <p className="text-xl font-semibold">
               {totalLostKg === null ? notEnoughDataLabel : `${totalLostKg.toFixed(1)} kg`}
             </p>
           </div>
           <div>
-            <p className="text-muted-foreground text-sm">{averagePaceTitle}</p>
+            <p className="text-muted-foreground flex items-center gap-1.5 text-sm">
+              <Gauge aria-hidden="true" className="size-3.5" />
+              {averagePaceTitle}
+            </p>
             <p className="text-xl font-semibold">
               {averagePaceKgPerWeek === null
                 ? notEnoughDataLabel
