@@ -7,5 +7,8 @@
   "layout.nav.checkIns": "Acompanhamento",
   "layout.nav.workouts": "Treino",
   "layout.nav.diet": "Dieta",
+  "layout.nav.toggle": "Alternar navegação",
+  "layout.theme.switchToDark": "Mudar para modo escuro",
+  "layout.theme.switchToLight": "Mudar para modo claro",
   "layout.logout": "Sair"
 }

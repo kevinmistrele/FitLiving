@@ -15,3 +15,6 @@ Thumbs.db
 
 # Claude Code handoffs (never committed, per frontend/docs/agents/workflow.md)
 .claude/handoffs/
+
+# Personal health/seed data — this repo is public, this file is not.
+docs/kevin-dados.md

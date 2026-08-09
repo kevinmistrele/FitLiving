@@ -1,5 +1,6 @@
 {
   "auth.login.title": "Sign in",
+  "auth.login.tagline": "Training, diet and progress, all in one place.",
   "auth.login.description": "Enter your email and password to access your FitLiving data.",
   "auth.login.emailLabel": "Email",
   "auth.login.passwordLabel": "Password",
